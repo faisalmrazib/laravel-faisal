@@ -58,7 +58,7 @@
                 <td>
                     <form action="{{ route('delete_cart', $item->id) }}" method="POST" class="d-inline">
                         @csrf
-                        @method('DELETE')
+                        @method('DELETE
                         <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
                     </form>
                 </td>

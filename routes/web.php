@@ -103,12 +103,12 @@ Route::middleware(['admin'])->group(function() {
 Route::middleware(['auth'])->group(function() {
 	Route::get('/product', [ProductController::class, 'index_product'])->name('index_product');
 	Route::get('/product/{product}', [ProductController::class, 'show_product'])->name('show_product');
-	Route::post('/cart/add/{product}', [CartController::class, 'add_to_cart'])->name('add_to_cart');
+	Route::post('/cart/add/{product}', [ProductController::class, 'add_to_cart'])->name('add_to_cart');
 	Route::get('/cart', [CartController::class, 'show_cart'])->name('show_cart');
 	Route::get('/cart', [CartController::class, 'index'])->name('index_cart');
     Route::get('/cart', [CartController::class, 'index'])->name('show_cart');
 
-    Route::post('/cart/add', [CartController::class, 'add_to_cart'])->name('add_to_cart');
+    // Route::post('/cart/add', [CartController::class, 'add_to_cart'])->name('add_to_cart');
     Route::put('/cart/update/{cart}', [CartController::class, 'update'])->name('update_cart');
     Route::delete('/cart/delete/{cart}', [CartController::class, 'delete'])->name('delete_cart');
     //Route::get('/cart/{id}', [CartController::class, 'show'])->name('show_cart');
