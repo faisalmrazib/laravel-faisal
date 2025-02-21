@@ -1,215 +1,150 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
+    <title>Product</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="7850d56f-8d94-4acb-8dd3-3242a7056233";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+    <link rel="icon" type="image/png" href="{{ asset('images/icons/favicon.png') }}" />
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'SALCAS TRIFT SHOP') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Styles -->
-    <style>
-        :root {
-            --matcha-green: #A8D8B9;
-            --deep-sea-blue: #2E5266;
-            --soft-white: #F5F5F5;
-            --dark-charcoal: #333333;
-        }
-
-        body {
-            background-color: var(--soft-white);
-            color: var(--dark-charcoal);
-            font-family: 'Inter', sans-serif;
-        }
-
-        .navbar {
-            background-color: var(--deep-sea-blue);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar-brand {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            color: var(--matcha-green) !important;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-link {
-            color: rgba(255, 255, 255, 0.8) !important;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            color: var(--matcha-green) !important;
-        }
-
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--matcha-green);
-        }
-
-        .dropdown-menu {
-            background-color: var(--deep-sea-blue);
-            border: none;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .dropdown-item {
-            color: rgba(255, 255, 255, 0.8);
-            transition: all 0.3s ease;
-        }
-
-        .dropdown-item:hover {
-            background-color: rgba(168, 216, 185, 0.1);
-            color: var(--matcha-green);
-        }
-
-        .btn-primary {
-            background-color: var(--matcha-green);
-            border: none;
-            color: var(--deep-sea-blue);
-            padding: 8px 20px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            transition: transform 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(168, 216, 185, 0.3);
-        }
-
-        .card {
-            background-color: #ffffff;
-            border: none;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .form-control {
-            background-color: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(46, 82, 102, 0.2);
-            color: var(--dark-charcoal);
-        }
-
-        .form-control:focus {
-            background-color: rgba(255, 255, 255, 0.9);
-            border-color: var(--matcha-green);
-            box-shadow: 0 0 0 3px rgba(168, 216, 185, 0.1);
-        }
-
-        .pagination .page-link {
-            background-color: #ffffff;
-            border: 1px solid rgba(46, 82, 102, 0.2);
-            color: var(--deep-sea-blue);
-        }
-
-        .pagination .page-item.active .page-link {
-            background-color: var(--matcha-green);
-            border-color: var(--matcha-green);
-            color: var(--deep-sea-blue);
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('fonts/iconic/css/material-design-iconic-font.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('fonts/linearicons-v1.0.0/icon-font.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animate/animate.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/css-hamburgers/hamburgers.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animsition/css/animsition.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/select2/select2.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/daterangepicker/daterangepicker.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/slick/slick.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/MagnificPopup/magnific-popup.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
 </head>
 
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container">
-                <a class="navbar-brand" href="{{ route('index_product') }}">
-                    <i class="fas fa-leaf me-2"></i>SALCAS TRIFT
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<body class="animsition">
+    <header class="header-v4">
+        <div class="container-menu-desktop">
+            <div class="wrap-menu-desktop how-shadow1">
+                <nav class="limiter-menu-desktop container">
+                    <a href="{{ url('/') }}" class="logo">
+                        <img src="{{ asset('images/icons/logo-01.png') }}" alt="IMG-LOGO">
+                    </a>
 
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item mx-2">
-                            <a class="nav-link active" href="{{ route('index_product') }}">Products</a>
-                        </li>
-                        <li class="nav-item mx-2">
-                            <a class="nav-link active" href="{{ route('show_cart') }}">Cart</a>
-                        </li>
-                        <li class="nav-item mx-2">
-                            <a class="nav-link active" href="{{ route('index_order') }}">Orders</a>
-                        </li>
-                    </ul>
+                    <div class="menu-desktop">
+                        <ul class="main-menu">
+                            <li class="active-menu"><a href="{{ url('/') }}">Home</a></li>
+                            <li><a href="{{ url('/product') }}">Shop</a></li>
+                            <li><a href="{{ url('/features') }}">Features</a></li>
+                            <li><a href="{{ url('/blog') }}">Blog</a></li>
+                            <li><a href="{{ url('/about') }}">About</a></li>
+                            <li><a href="{{ url('/profile') }}">Profile</a></li>
+                        </ul>
+                    </div>
 
-                    <ul class="navbar-nav ms-auto">
-                        @auth
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
-                                <i class="fas fa-user-circle me-2"></i>
-                                {{ Auth::user()->name }}
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                @if(Auth::user()->is_admin)
-                                <li><a class="dropdown-item" href="{{ route('create_product') }}">
-                                    <i class="fas fa-plus-circle me-2"></i>New Product
-                                </a></li>
-                                @endif
-                                <li><a class="dropdown-item" href="{{ route('show_profile') }}">
-                                    <i class="fas fa-user-cog me-2"></i>Profile
-                                </a></li>
-                                <li><hr class="dropdown-divider bg-secondary"></li>
-                                <li>
-                                <form action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                    <button type="submit" class="btn btn-danger">
-                                    <i class="fas fa-sign-out-alt me-2"></i>Logout
-                                    </button>
-                            </form>
-                       </li>
-                            </ul>
-                        </li>
-                        @else
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">Register</a>
-                        </li>
-                        @endauth
+                    <div class="wrap-icon-header flex-w flex-r-m">
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
+                            <i class="zmdi zmdi-search"></i>
+                        </div>
+
+                        <a href="{{ url('/cart') }}">
+                            <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti">
+                                <i class="zmdi zmdi-shopping-cart"></i>
+                            </div>
+                        </a>
+
+                        <a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
+                            <i class="zmdi zmdi-favorite-outline"></i>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        @yield('content')
+    </main>
+
+    <!-- resources/views/layouts/footer.blade.php -->
+    <footer class="bg3 p-t-75 p-b-32">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-lg-3 p-b-50">
+                    <h4 class="stext-301 cl0 p-b-30">Categories</h4>
+                    <ul>
+                        <li class="p-b-10"><a href="#" class="stext-107 cl7 hov-cl1 trans-04">Women</a></li>
+                        <li class="p-b-10"><a href="#" class="stext-107 cl7 hov-cl1 trans-04">Men</a></li>
+                        <li class="p-b-10"><a href="#" class="stext-107 cl7 hov-cl1 trans-04">Shoes</a></li>
+                        <li class="p-b-10"><a href="#" class="stext-107 cl7 hov-cl1 trans-04">Watches</a></li>
                     </ul>
                 </div>
+                <div class="col-sm-6 col-lg-3 p-b-50">
+                    <h4 class="stext-301 cl0 p-b-30">Help</h4>
+                    <ul>
+                        <li class="p-b-10"><a href="#" class="stext-107 cl7 hov-cl1 trans-04">Track Order</a></li>
+                        <li class="p-b-10"><a href="#" class="stext-107 cl7 hov-cl1 trans-04">Returns</a></li>
+                        <li class="p-b-10"><a href="#" class="stext-107 cl7 hov-cl1 trans-04">Shipping</a></li>
+                        <li class="p-b-10"><a href="#" class="stext-107 cl7 hov-cl1 trans-04">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-lg-3 p-b-50">
+                    <h4 class="stext-301 cl0 p-b-30">GET IN TOUCH</h4>
+                    <p class="stext-107 cl7 size-201">
+                        Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
+                    </p>
+                    <div class="p-t-27">
+                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"><i class="fa fa-instagram"></i></a>
+                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16"><i class="fa fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3 p-b-50">
+                    <h4 class="stext-301 cl0 p-b-30">Newsletter</h4>
+                    <form>
+                        <div class="wrap-input1 w-full p-b-4">
+                            <input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
+                            <div class="focus-input1 trans-04"></div>
+                        </div>
+                        <div class="p-t-18">
+                            <button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </nav>
+            <div class="p-t-40">
+                <div class="flex-c-m flex-w p-b-18">
+                    <a href="#" class="m-all-1"><img src="{{ asset('images/icons/icon-pay-01.png') }}" alt="ICON-PAY"></a>
+                    <a href="#" class="m-all-1"><img src="{{ asset('images/icons/icon-pay-02.png') }}" alt="ICON-PAY"></a>
+                    <a href="#" class="m-all-1"><img src="{{ asset('images/icons/icon-pay-03.png') }}" alt="ICON-PAY"></a>
+                    <a href="#" class="m-all-1"><img src="{{ asset('images/icons/icon-pay-04.png') }}" alt="ICON-PAY"></a>
+                    <a href="#" class="m-all-1"><img src="{{ asset('images/icons/icon-pay-05.png') }}" alt="ICON-PAY"></a>
+                </div>
+                <p class="stext-107 cl6 txt-center">
+                    Copyright &copy;<script>
+                        document.write(new Date().getFullYear());
+                    </script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                </p>
+            </div>
+        </div>
+    </footer>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('vendor/animsition/js/animsition.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/popper.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
+    <script src="{{ asset('vendor/daterangepicker/moment.min.js') }}"></script>
+    <script src="{{ asset('vendor/daterangepicker/daterangepicker.js') }}"></script>
+    <script src="{{ asset('vendor/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('vendor/parallax100/parallax100.js') }}"></script>
+    <script src="{{ asset('vendor/MagnificPopup/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('vendor/isotope/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('vendor/sweetalert/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 </body>
+
 </html>

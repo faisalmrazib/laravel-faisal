@@ -16,7 +16,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RajaOngkirController;
-
+use App\Models\Product;
 
 // Route untuk mendapatkan daftar provinsi
 Route::get('/provinces', [RajaOngkirController::class, 'getProvinces']);
@@ -50,11 +50,13 @@ Route::get('/cities/{provinceId}', [RajaOngkirController::class, 'getCities']);
 Route::post('/check-shipping-cost', [RajaOngkirController::class, 'checkShippingCost']);
 
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+// Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome',[
+        'products' => Product::All()
+    ]);
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -110,6 +112,7 @@ Route::middleware(['auth'])->group(function() {
 
     // Route::post('/cart/add', [CartController::class, 'add_to_cart'])->name('add_to_cart');
     Route::put('/cart/update/{cart}', [CartController::class, 'update'])->name('update_cart');
+    Route::put('/cart/update', [CartController::class, 'updateCartBulk'])->name('update_cart_bulk');
     Route::delete('/cart/delete/{cart}', [CartController::class, 'delete'])->name('delete_cart');
     //Route::get('/cart/{id}', [CartController::class, 'show'])->name('show_cart');
 	
