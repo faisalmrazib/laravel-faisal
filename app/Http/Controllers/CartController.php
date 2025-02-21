@@ -102,6 +102,16 @@ class CartController extends Controller
 
         return redirect('/cart')->with('success', 'Keranjang berhasil diperbarui!');
     }
+    public function updateCartBulk(Request $request)
+    {
+        foreach ($request->quantities as $cartId => $quantity) {
+            Cart::where('id', $cartId)->update(['quantity' => $quantity]);
+        }
+    
+        return redirect()->back()->with('success', 'Cart updated successfully!');
+    }
+    
+
     // Menghapus produk dari cart
     public function delete(Request $request)
     {
