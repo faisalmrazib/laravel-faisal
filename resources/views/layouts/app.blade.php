@@ -40,7 +40,7 @@
                             <li><a href="{{ url('/features') }}">Features</a></li>
                             <li><a href="{{ url('/blog') }}">Blog</a></li>
                             <li><a href="{{ url('/about') }}">About</a></li>
-                            <li><a href="{{ url('/contact') }}">Contact</a></li>
+                            <li><a href="{{ url('/profile') }}">Profile</a></li>
                         </ul>
                     </div>
 

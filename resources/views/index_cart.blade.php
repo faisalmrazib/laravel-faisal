@@ -172,9 +172,10 @@
                             </span>
                         </div>
 
-                        <div class="size-209">
+                        <div class="size-209 p-t-1">
                             <span class="mtext-110 cl2">
-                                ${{ number_format($cart->amount ?? NULL, 0, ',', '.') }} </span>
+                                ${{ number_format($cartItems->sum('amount'), 0, ',', '.') }}
+                            </span>
                         </div>
                     </div>
 
@@ -231,7 +232,7 @@
 
                         <div class="size-209 p-t-1">
                             <span class="mtext-110 cl2">
-                                ${{ number_format($cart->amount ?? NULL, 0, ',', '.') }} </span>
+                                ${{ number_format($cartItems->sum('amount'), 0, ',', '.') }}
                             </span>
                         </div>
                     </div>
