@@ -15,15 +15,15 @@
                         <div class="form-group mb-3">
                             <label for="product_id">Produk</label>
                             <select name="product_id" id="product_id" class="form-control" required>
-                            @forelse ($cartItems as $item)
-                         <div class="cart-item">
-                            <h4>{{ $item->product->name }}</h4>
-                            <p>Harga: Rp{{ number_format($item->product->price, 0, ',', '.') }}</p>
-                            <p>Jumlah: {{ $item->quantity }}</p>
-                            </div>
-                            @empty
-                                <p>Keranjang belanja kosong.</p>
-                            @endforelse
+                                @forelse ($cartItems as $item)
+                                    <option value="{{ $item->product->id ?? '' }}">
+                                        {{ $item->product->name ?? '-' }} - 
+                                        Rp{{ number_format($item->product->price ?? 0, 0, ',', '.') }} -
+                                        Jumlah: {{ $item->quantity ?? '-' }}
+                                    </option>
+                                @empty
+                                    <option value="">Keranjang belanja kosong</option>
+                                @endforelse
                             </select>
                         </div>
 
@@ -65,10 +65,10 @@ document.getElementById('checkoutForm').addEventListener('submit', function (e) 
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
         },
         body: JSON.stringify({
-            product_id: document.getElementById('product_id').value,
-            quantity: document.getElementById('quantity').value,
-            voucher_code: document.getElementById('voucher_code').value,
-            shipping_address: document.getElementById('shipping_address').value,
+            product_id: document.getElementById('product_id').value || null,
+            quantity: document.getElementById('quantity').value || 1,
+            voucher_code: document.getElementById('voucher_code').value || null,
+            shipping_address: document.getElementById('shipping_address').value || null,
         })
     })
     .then(response => response.json())

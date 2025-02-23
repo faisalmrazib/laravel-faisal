@@ -16,23 +16,23 @@ class CheckoutController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $cartItems = $user->cartItems; // Asumsi relasi cartItems sudah didefinisikan di model User
+        $cartItems = $user->cartItems ?? collect(); // Pastikan tidak null
         return view('checkout_index', compact('cartItems'));
     }
-    
 
     // Proses checkout dengan AJAX
     public function store(Request $request)
     {
-
-        $rajaOngkirService = new RajaOngkirService();
-        $cost = $rajaOngkirService->getCost($request->origin, $request->destination, $request->weight, $request->courier);
         // Validasi input
         $validator = Validator::make($request->all(), [
             'product_id' => 'required|exists:products,id',
             'quantity' => 'required|integer|min:1',
             'voucher_code' => 'nullable|exists:vouchers,code',
             'shipping_address' => 'required|string|max:255',
+            'origin' => 'required|string',
+            'destination' => 'required|string',
+            'weight' => 'required|numeric|min:1',
+            'courier' => 'required|string',
         ]);
 
         if ($validator->fails()) {
@@ -40,14 +40,16 @@ class CheckoutController extends Controller
                 'success' => false,
                 'errors' => $validator->errors(),
             ], 422);
-
-            return redirect()->route('home')->with('success', 'Pesanan berhasil dibuat!');
         }
+
+        // Hitung ongkos kirim
+        $rajaOngkirService = new RajaOngkirService();
+        $cost = $rajaOngkirService->getCost($request->origin, $request->destination, $request->weight, $request->courier);
 
         // Ambil data produk
         $product = Product::findOrFail($request->product_id);
 
-        // Hitung total harga
+        // Hitung total harga sebelum diskon
         $totalPrice = $product->price * $request->quantity;
 
         // Cek dan terapkan voucher jika ada
@@ -73,6 +75,7 @@ class CheckoutController extends Controller
             'total_price' => $totalPrice,
             'discount' => $discount,
             'shipping_address' => $request->shipping_address,
+            'shipping_cost' => $cost, // Simpan ongkos kirim
             'status' => 'pending',
         ]);
 

@@ -49,8 +49,6 @@ class ProductController extends Controller
         $imagePath = $request->file('image')->store('public/images');
         $imageName = basename($imagePath);
 
-        // Simpan data produk ke database
-        // Simpan data produk ke database
         Product::create([
             'name' => $request->name,
             'description' => $request->description,

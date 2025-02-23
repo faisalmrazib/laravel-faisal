@@ -129,6 +129,7 @@
                                 <td class="column-2">{{ $cart->product->name }}</td>
                                 <td class="column-3">${{ number_format($cart->product->price ?? NULL, 0, ',', '.') }}</td>
                                 <td>
+                                    <!-- Form UPDATE QUANTITY dipindahkan ke luar form utama -->
                                     <form action="{{ route('update_cart', $cart->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('PUT')
@@ -237,9 +238,9 @@
                         </div>
                     </div>
 
-                    <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                    <a href="{{ url('/checkout') }}" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
                         Proceed to Checkout
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
