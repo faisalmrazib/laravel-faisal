@@ -30,16 +30,15 @@
             <div class="wrap-menu-desktop how-shadow1">
                 <nav class="limiter-menu-desktop container">
                     <a href="{{ url('/') }}" class="logo">
-                        <img src="{{ asset('images/icons/logo-01.png') }}" alt="IMG-LOGO">
                     </a>
 
                     <div class="menu-desktop">
                         <ul class="main-menu">
                             <li class="active-menu"><a href="{{ url('/') }}">Home</a></li>
-                            <li><a href="{{ url('/product') }}">Shop</a></li>
-                            <li><a href="{{ url('/features') }}">Features</a></li>
-                            <li><a href="{{ url('/blog') }}">Blog</a></li>
-                            <li><a href="{{ url('/about') }}">About</a></li>
+                            <li><a href="{{ url('/product') }}">Product</a></li>
+                            <li><a href="{{ url('/cart') }}">Cart</a></li>
+                            <li><a href="{{ url('/order') }}">Order</a></li>
+                            <li><a href="{{ url('register') }}">Register</a></li>
                             <li><a href="{{ url('/profile') }}">Profile</a></li>
                         </ul>
                     </div>
@@ -55,9 +54,9 @@
                             </div>
                         </a>
 
-                        <a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
+                        <!--<a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
                             <i class="zmdi zmdi-favorite-outline"></i>
-                        </a>
+                        </a> -->
                     </div>
                 </nav>
             </div>
@@ -81,15 +80,7 @@
                         <li class="p-b-10"><a href="#" class="stext-107 cl7 hov-cl1 trans-04">Watches</a></li>
                     </ul>
                 </div>
-                <div class="col-sm-6 col-lg-3 p-b-50">
-                    <h4 class="stext-301 cl0 p-b-30">Help</h4>
-                    <ul>
-                        <li class="p-b-10"><a href="#" class="stext-107 cl7 hov-cl1 trans-04">Track Order</a></li>
-                        <li class="p-b-10"><a href="#" class="stext-107 cl7 hov-cl1 trans-04">Returns</a></li>
-                        <li class="p-b-10"><a href="#" class="stext-107 cl7 hov-cl1 trans-04">Shipping</a></li>
-                        <li class="p-b-10"><a href="#" class="stext-107 cl7 hov-cl1 trans-04">FAQs</a></li>
-                    </ul>
-                </div>
+                
                 <div class="col-sm-6 col-lg-3 p-b-50">
                     <h4 class="stext-301 cl0 p-b-30">GET IN TOUCH</h4>
                     <p class="stext-107 cl7 size-201">
